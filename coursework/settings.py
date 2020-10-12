@@ -29,7 +29,7 @@ SECRET_KEY = 'rtwm)6-7r!g@4n-ot%tf=zy!n!dqt)9xiv(cw7_f@mxssko!q_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['machine-learning-for-hd.herokuapp.com']
+ALLOWED_HOSTS = ['*]
 
 
 # Application definition
