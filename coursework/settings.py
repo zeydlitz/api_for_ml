@@ -93,6 +93,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+import dj_database_url
+df=dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(df)
 
 
 # Password validation
