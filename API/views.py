@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+
 from .froms import MyForm
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import api_view
@@ -44,7 +46,7 @@ from .serializers import MLAlgorithmSerializer
 
 from .models import MLAlgorithmStatus
 from .serializers import MLAlgorithmStatusSerializer
-
+from ml.classifier.ada import Ada
 from .models import MLRequest
 from .serializers import MLRequestSerializer
 from django.db import transaction
@@ -58,22 +60,34 @@ class ApprovalsView(viewsets.ModelViewSet):
 
 
 class Forms(CreateView):
+    def get_success_url(self):
+        return reverse('offerta_create', args=(self.object.id,))
     model = heartd
     template_name = 'list/forms.html'
     fields = '__all__'
+
 
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
 
-# def myform(request):
-#     if request.method=="POST":
-#         form=MyForm(request.POST)
-#         if form.is_valid():
-#             pass
-#
-#
+def myform(request):
+    sent=False
+    response=None
+    if request.method=="POST":
+        form=MyForm(request.POST)
+        if form.is_valid():
+            cd=form.cleaned_data
+            my_alg = Ada()
+            response = my_alg.compute_prediction(cd)
+            response['probability']=float("{:.2f}".format(response['probability']))
+            sent=True
+    else :
+        form=MyForm()
+    return render(request,"list/forms.html",{'sent':sent,'response':response,'form': form})
+
+
 # @api_view(["POST"])
 # def approvereject(request):
 #     try:

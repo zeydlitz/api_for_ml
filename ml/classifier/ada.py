@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler
 import os
 from django.conf import settings
-
+import numpy as np
 class Ada:
     def __init__(self):
         path_to_ada =  os.path.join(settings.BASE_DIR, r"research/model/Ada_Boost.pkl")
@@ -28,11 +28,13 @@ class Ada:
         for col in features:
             if input_data[col].dtype in numerics: continue
             categorical_columns.append(col)
-
+        path1='../../research/label/sex_ca.npy'
         for col in categorical_columns:
             if col in input_data.columns:
                 le = LabelEncoder()
-                le.fit(list(input_data[col].astype(str).values))
+                #le.fit(list(input_data[col].astype(str).values))
+                psth="research/label/"+col+'.npy'
+                le.classes_ = np.load(psth)
                 input_data[col] = le.transform(list(input_data[col].astype(str).values))
 
         scaler2 = StandardScaler()

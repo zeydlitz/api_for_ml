@@ -69,4 +69,5 @@ class MLTests(TestCase):
 
 
 
-
+a=MLTests()
+a.test_et_algorithm()
