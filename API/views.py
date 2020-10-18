@@ -81,6 +81,8 @@ def myform(request):
             cd=form.cleaned_data
             my_alg = Ada()
             response = my_alg.compute_prediction(cd)
+            form.fields['new_name'] = ['Возраст','Пол','Уровень боли', 'Артериальное давление','Холестерин','Уровень сахара','Результат кардиографии', 'Максимльная частота пульса','Стенокардия','Dep']
+            del form.fields['item']
             response['probability']=float("{:.2f}".format(response['probability']))
             sent=True
     else :

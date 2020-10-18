@@ -18,6 +18,10 @@ class Ada:
         input_data['chol2'] = input_data['chol'] // 40
         input_data['thalach2'] = input_data['thalach'] // 40
         input_data['oldpeak2'] = input_data['oldpeak'] // 0.4
+        if input_data['sex'].values=='Male':
+            input_data['sex']=1
+        else:
+            input_data['sex'] = 0
         for i in ['sex', 'age2', 'fbs', 'restecg', 'exang', 'thal', ]:
             for j in ['cp', 'trestbps2', 'chol2', 'thalach2', 'oldpeak2', 'slope', 'ca']:
                 input_data[i + "_" + j] = input_data[i].astype('str') + "_" + input_data[j].astype('str')
@@ -37,8 +41,8 @@ class Ada:
                 le.classes_ = np.load(psth)
                 input_data[col] = le.transform(list(input_data[col].astype(str).values))
 
-        scaler2 = StandardScaler()
-        train0 = pd.DataFrame(scaler2.fit_transform(input_data), columns=input_data.columns)
+        scaler2 =joblib.load("research/label/std_scaler.bin")
+        train0 = pd.DataFrame(scaler2.transform(input_data), columns=input_data.columns)
         return train0
 
     def predict(self, input_data):

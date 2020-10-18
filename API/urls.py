@@ -30,7 +30,7 @@ url(
     ),
 #    path('form/', Forms.as_view(), name='forms'),
    path('form/', myform, name='forms'),
-    path('form/<int:pk>/', Forms.as_view(), name='forms'),
+    path('form/<int:pk>/', Forms.as_view(), name='f'),
 
 ]
 
