@@ -66,6 +66,9 @@ class Forms(CreateView):
     template_name = 'list/forms.html'
     fields = '__all__'
 
+class About(TemplateView):
+    template_name = 'list/generic.html'
+
 
 
 class HomePageView(TemplateView):

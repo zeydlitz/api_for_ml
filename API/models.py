@@ -39,7 +39,7 @@ class heartd(models.Model):
     )
 
     age = models.PositiveSmallIntegerField()
-    sex = models.IntegerField(max_length=6,choices=pol)
+    sex = models.IntegerField(choices=pol)
     cp = models.IntegerField(choices=chest_pain)
     trestbps = models.PositiveSmallIntegerField()
     chol = models.IntegerField()

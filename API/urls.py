@@ -10,7 +10,7 @@ from .views import MLRequestViewSet
 from .views import PredictView
 from .views import ABTestViewSet
 from .views import StopABTestView
-from .views import HomePageView , Forms , myform
+from .views import HomePageView , Forms , myform,About
 router = DefaultRouter(trailing_slash=False)
 router.register(r"endpoints", EndpointViewSet, basename="endpoints")
 router.register(r"mlalgorithms", MLAlgorithmViewSet, basename="mlalgorithms")
@@ -31,6 +31,7 @@ url(
 #    path('form/', Forms.as_view(), name='forms'),
    path('form/', myform, name='forms'),
     path('form/<int:pk>/', Forms.as_view(), name='f'),
+    path('about/',About.as_view() , name='about'),
 
 ]
 
