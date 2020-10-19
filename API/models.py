@@ -1,23 +1,55 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class heartd(models.Model):
     pol = (
-        ('Male', 'Male'),
-        ('Female', 'Female')
+        (1, 'Male'),
+        (0, 'Female')
     )
-    age = models.IntegerField()
-    sex = models.CharField(max_length=6,choices=pol)
-    cp = models.IntegerField()
-    trestbps = models.IntegerField()
+    chest_pain=(
+        (1, 'Typical angina'),
+        (2, 'Atypical angina'),
+        (3, 'Non-anginal pain'),
+        (4, 'Asymptomatic')
+    )
+    saxar=(
+        (1,True),
+        (0,False)
+    )
+    rest=(
+        (0, 'Normal'),
+        (1, 'Having ST-T wave abnormality'),
+        (2, 'Hypertrophy')
+    )
+    ang=(
+        (1,True),
+        (0,False)
+    )
+    number=(
+        (1,1),
+        (2,2),
+        (3,3)
+    )
+    t=(
+        (1,'Normal'),
+        (2,'Fixed defect'),
+        (3,'Reversable defect'),
+        (4,'Nan')
+    )
+
+    age = models.PositiveSmallIntegerField()
+    sex = models.IntegerField(max_length=6,choices=pol)
+    cp = models.IntegerField(choices=chest_pain)
+    trestbps = models.PositiveSmallIntegerField()
     chol = models.IntegerField()
-    fbs = models.IntegerField()
-    restecg = models.IntegerField()
-    thalach = models.IntegerField()
-    exang = models.IntegerField()
-    oldpeak = models.FloatField()
+    fbs = models.IntegerField(choices=saxar)
+    restecg = models.IntegerField(choices=rest)
+    thalach = models.PositiveSmallIntegerField()
+    exang = models.IntegerField(choices=ang)
+    oldpeak = models.FloatField( validators=[MinValueValidator(0.0), MaxValueValidator(5)])
     slope = models.IntegerField()
-    ca = models.IntegerField()
+    ca = models.IntegerField(choices=number)
     thal = models.IntegerField()
     def __str__(self):
         template = f'{self.age} {self.sex}'

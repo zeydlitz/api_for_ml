@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'ml',
     'whitenoise.runserver_nostatic',
+    'django_inlinecss'
 ]
 
 MIDDLEWARE = [
