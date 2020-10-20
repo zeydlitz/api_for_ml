@@ -3432,7 +3432,7 @@
 			#banner input[type="button"].alt,
 			#banner button.alt,
 			#banner .button.alt {
-				background-color: transparent;
+				background-color: #444444;
 				box-shadow: inset 0 0 0 2px #fff;
 				color: #ffffff !important;
 			}
