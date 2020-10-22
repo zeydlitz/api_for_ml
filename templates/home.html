@@ -16,6 +16,22 @@
         div > p > input {
             width: 100% !important;
         }
+
+        .image.fit img {
+            width: 20%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .i-icon-2 {
+    display: inline-block;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
     </style>
 
 </head>
@@ -27,7 +43,7 @@
         <nav id="nav">
             <a href="/">Home</a>
             <a href="{% url 'about' %}">About</a>
-            <a href="elements.html">Contact</a>
+            <a href="{% url 'email' %}">Contact</a>
         </nav>
     </div>
 </header>
@@ -37,9 +53,11 @@
     <!-- Banner -->
     <section id="banner" style="background-image: url('{% static 'images/heart.jpg' %}')">
         <div class="inner">
-            <h1 style="color: #ffffff">Course Work : <span>Predict Heart Disease using Machine learning algorithm:</span></h1>
+            <h1 style="color: #ffffff">Course Work :
+                <span>Predict Heart Disease using Machine learning algorithm:</span></h1>
             <ul class="actions">
-                <li><a href="{% url 'forms' %}" class="button alt" style="background-color: #444444">Get Started</a></li>
+                <li><a href="{% url 'forms' %}" class="button alt" style="background-color: #444444">Get Started</a>
+                </li>
             </ul>
         </div>
     </section>
@@ -50,9 +68,17 @@
                 <h2>About</h2>
             </header>
             <div style='font-family: "Lato",sant-serif;'>
-            <p> ВЫЫВЫВАЫВА Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.</p>
-            <p>В современном мире ведущей причиной смерти, среди развитых стран, являются Сердечно-сосудистые заболевания. Сердечно-сосудистые заболевания, обусловленные атеросклеротическим поражением магистральных артерий (коронарных, головного мозга), являются основной причиной смерти во всем мире: ни по какой другой причине ежегодно не умирает столько людей, сколько от ССЗ. </p>
-            <p>И поэтому раннее прогнозирвоание заболевания является необходимым условием для благополучной и долгой жизни. И для решения этой проблемы было проведено иссследоввание и разработан сайт для прогнозирования сердечных заболеваний.</p>
+                <p>In today's world, the leading cause of death among developed countries is cardiovascular disease.
+                    Cardiovascular diseases caused by atherosclerotic lesions of the main arteries (coronary arteries,
+                    brain) are the main cause of death worldwide: no other cause of death causes as many people die
+                    annually as from heart disease.</p>
+                <p>Early prediction of illness is therefore a prerequisite for a happy and long life. And to solve this
+                    problem, research has been carried out and a website has been developed to forecast heart
+                    disease.</p>
+                <p>Early prediction of illness is therefore a prerequisite for a happy and long life. And to solve this
+                    problem, research has been carried out and a website has been developed to forecast heart
+                    disease.</p>
+
             </div>
             <ul class="actions">
                 <li><a href="#" class="button alt">Learn More</a></li>
@@ -66,25 +92,25 @@
             <article>
                 <div class="content">
                     <header>
-                        <h3>Pellentesque adipis</h3>
+                        <h3>REST API</h3>
                     </header>
                     <div class="image fit">
-                        <img src="{% static "images/pic01.jpg" %}" alt="My image">
+                        <img src="{% static "images/r.jpg" %}" alt="My image">
                     </div>
-                    <p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna ullamcorper vehicula. Integer adipiscin
-                        sem. Nullam quis massa sit amet lorem ipsum feugiat tempus.</p>
+                    <p>The website provides a rest api if you need to process several patients at once and need to do so
+                        quickly.</p>
                 </div>
             </article>
             <article class="alt">
                 <div class="content">
                     <header>
-                        <h3>Morbi interdum mol</h3>
+                        <h3>User friendly interface</h3>
                     </header>
                     <div class="image fit">
-                        <img src="{% static "images/pic02.jpg" %}" alt="My  second image">
+                        <img src="{% static "images/ui.png" %}" alt="My  second image">
                     </div>
-                    <p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna ullamcorper vehicula. Integer adipiscin
-                        sem. Nullam quis massa sit amet lorem ipsum feugiat tempus.</p>
+                    <p>You can easily enter your data and get the result of processing. your data will not fall into the
+                        wrong hands.</p>
                 </div>
             </article>
         </div>
@@ -95,6 +121,16 @@
         <header>
             <h2>Contact us</h2>
         </header>
+
+
+        <div class="footer-full__social-list"><a class="footer-full__social-link" href="https://vk.com/ozby_books"><span
+                class="i-icon-2 i-icon-2_vk-small"></span></a><a class="footer-full__social-link"
+                                                                 href="https://www.instagram.com/myozby/"><span
+                class="i-icon-2 i-icon-2_ig-small"></span></a><a class="footer-full__social-link"
+                                                                 href="https://www.facebook.com/pages/OZby-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD/106360326097455?sk=wall"><span
+                class="i-icon-2 i-icon-2_fb-small"></span></a>
+        </div>
+
         <div class="copyright">
             <p>&copy; Ivashkevich Maksim</p>
         </div>

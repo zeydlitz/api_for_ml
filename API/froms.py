@@ -1,8 +1,18 @@
 from django.forms import ModelForm
-from .models import heartd
+from .models import heartd,EmailPost
 from django import forms
 
-
+class EmailPostForm(ModelForm):
+    comments = forms.CharField(widget=forms.Textarea(attrs={"rows": 6, "cols": 22}))
+    # def init(self,*args, **kwargs):
+    #     super(EmailPostForm, self).__init__(*args, **kwargs)
+    #     self.fields['commentss'].widget.attrs['rows'] = 6
+    #     self.fields['comments'].widget.attrs['cols'] = 22
+    #     # widgets = {'comments': forms.Textarea(attrs={'rows': 6,
+    #     #                                            'cols': 22},), }
+    class Meta:
+        model=EmailPost
+        fields='__all__'
 class MyForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(MyForm, self).__init__(*args, **kwargs)

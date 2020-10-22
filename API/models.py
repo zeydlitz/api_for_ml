@@ -2,10 +2,15 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+class EmailPost(models.Model):
+    name = models.CharField(max_length=25)
+    email = models.EmailField()
+    comments = models.TextField(null=True)
+
 class heartd(models.Model):
     pol = (
-        (1, 'Male'),
-        (0, 'Female')
+        ('Male', 'Male'),
+        ('Female', 'Female')
     )
     chest_pain=(
         (1, 'Typical angina'),
@@ -39,7 +44,7 @@ class heartd(models.Model):
     )
 
     age = models.PositiveSmallIntegerField()
-    sex = models.IntegerField(choices=pol)
+    sex = models.CharField(choices=pol,max_length=7)
     cp = models.IntegerField(choices=chest_pain)
     trestbps = models.PositiveSmallIntegerField()
     chol = models.IntegerField()

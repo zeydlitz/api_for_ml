@@ -51,8 +51,27 @@ from .models import MLRequest
 from .serializers import MLRequestSerializer
 from django.db import transaction
 from django.views.generic import TemplateView, CreateView
+from .froms import EmailPostForm
+from django.core.mail import send_mail
 
+def post_share(request):
 
+    sent = False
+    if request.method == 'POST':
+        # Form was submitted
+        form = EmailPostForm(request.POST)
+        if form.is_valid():
+            # Form fields passed validation
+            cd = form.cleaned_data
+            subject = f"Hello, {cd['name']}, we have recived your message."
+            message = f"Your message:\n" \
+                      f"{cd['name']}"
+            send_mail(subject, message, 'maksimka.ivashkevich27@gmail.com',[cd['email']])
+            sent = True
+    # ... send email
+    else:
+        form = EmailPostForm()
+    return render(request, 'list/email.html', {'form': form,'sent': sent})
 
 class ApprovalsView(viewsets.ModelViewSet):
     queryset = heartd.objects.all()

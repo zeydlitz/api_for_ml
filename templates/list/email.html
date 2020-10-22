@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+{% load inlinecss %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Block Page{% endblock %}</title>
+
+</head>
+<body>
+{% block content %}
+    {% if sent %}
+        <h1>E-mail successfully sent</h1>
+        <p>
+            Your E-mail is successfully sent to {{ form.cleaned_data.email }}
+        </p>
+
+    {% else %}
+        <h1>E-mail</h1>
+        <div style="right : 50%;">
+            {#    <div style=" padding: 50px;   background: #ccc;   position: fixed; top : 0рх; left : 50рх; padding : 1Opx; margin : Орх; width : 100%;">#}
+            <form action="" method="post">
+                {% csrf_token %}
+                <div style="color: #0c0c0c !important;">
+                     {{ form.as_p }}
+                </div>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
+</body>
+</html>
