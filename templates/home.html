@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="{% static "images/title.png" %}" type="image/icon type">
     <title>{% block title %}Home page{% endblock %}</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
@@ -17,21 +18,21 @@
             width: 100% !important;
         }
 
-        .image.fit img {
+        a > .image.fit img {
             width: 20%;
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .i-icon-2 {
-    display: inline-block;
-    text-transform: none;
-    speak: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
+           .i-icon-2 {
+            display: inline-block;
+            text-transform: none;
+            speak: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
     </style>
 
 </head>
@@ -39,7 +40,7 @@
 
 <header id="header">
     <div class="inner">
-        <a href="/" class="logo">Machine learning</a>
+        <a href="/" class="logo">CourseWork</a>
         <nav id="nav">
             <a href="/">Home</a>
             <a href="{% url 'about' %}">About</a>
@@ -123,14 +124,17 @@
         </header>
 
 
-        <div class="footer-full__social-list"><a class="footer-full__social-link" href="https://vk.com/ozby_books"><span
-                class="i-icon-2 i-icon-2_vk-small"></span></a><a class="footer-full__social-link"
-                                                                 href="https://www.instagram.com/myozby/"><span
-                class="i-icon-2 i-icon-2_ig-small"></span></a><a class="footer-full__social-link"
-                                                                 href="https://www.facebook.com/pages/OZby-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD/106360326097455?sk=wall"><span
-                class="i-icon-2 i-icon-2_fb-small"></span></a>
-        </div>
-
+{#        <div class="icons">#}
+{#            <a href="https://www.linkedin.com/in/zeydlitz/"><img src="{% static "images/linkedin.png" %}"></a>#}
+{#            <a href="https://github.com/zeydlitz"><img src="{% static "images/GitHub.png" %}"></a>#}
+{#            <a href="https://t.me/le_punir"><img src="{% static "images/tel.png" %}"></a>#}
+{##}
+{#        </div>#}
+        <div>
+            <a href="https://www.linkedin.com/in/zeydlitz/"class="button alt"  target="_blank" style="background-color: #444444; background-color: transparent;">LinkedIN</a>
+            <a href="https://github.com/zeydlitz" class="button alt"  target="_blank" style="background-color: #444444; background-color: transparent;">GitHub</a>
+            <a href="https://t.me/le_punir" class="button alt" target="_blank" style="background-color: #444444; background-color: transparent;">Telegram</a>
+            </div>
         <div class="copyright">
             <p>&copy; Ivashkevich Maksim</p>
         </div>

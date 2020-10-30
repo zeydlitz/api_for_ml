@@ -18,7 +18,7 @@ class MyForm(ModelForm):
         super(MyForm, self).__init__(*args, **kwargs)
         self.fields['age'].label = "Возраст"
         self.fields['sex'].label = "Пол"
-        self.fields['cp'].label = "Уровень Боли"
+        self.fields['cp'].label = "Боль в груди"
         self.fields['trestbps'].label = "Артериальное давление"
         self.fields['chol'].label = "Холестерин"
         self.fields['fbs'].label = "Уровень сахара"

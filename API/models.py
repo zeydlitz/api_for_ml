@@ -19,8 +19,8 @@ class heartd(models.Model):
         (4, 'Asymptomatic')
     )
     saxar=(
-        (1,True),
-        (0,False)
+        (1,'Lower than 120mg/ml'),
+        (0,'Greater than 120mg/ml')
     )
     rest=(
         (0, 'Normal'),
@@ -32,6 +32,11 @@ class heartd(models.Model):
         (0,False)
     )
     number=(
+        (1,'upsloping'),
+        (2,'flat'),
+        (3,'downsloping')
+    )
+    amount=(
         (1,1),
         (2,2),
         (3,3)
@@ -47,15 +52,15 @@ class heartd(models.Model):
     sex = models.CharField(choices=pol,max_length=7)
     cp = models.IntegerField(choices=chest_pain)
     trestbps = models.PositiveSmallIntegerField()
-    chol = models.IntegerField()
+    chol = models.PositiveSmallIntegerField()
     fbs = models.IntegerField(choices=saxar)
     restecg = models.IntegerField(choices=rest)
     thalach = models.PositiveSmallIntegerField()
     exang = models.IntegerField(choices=ang)
     oldpeak = models.FloatField( validators=[MinValueValidator(0.0), MaxValueValidator(5)])
-    slope = models.IntegerField()
-    ca = models.IntegerField(choices=number)
-    thal = models.IntegerField()
+    slope = models.IntegerField(choices=number)
+    ca = models.IntegerField(choices=amount)
+    thal = models.IntegerField(choices=t)
     def __str__(self):
         template = f'{self.age} {self.sex}'
         return template
