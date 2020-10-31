@@ -65,7 +65,7 @@ def post_share(request):
             cd = form.cleaned_data
             subject = f"Hello, {cd['name']}, we have recived your message."
             message = f"Your message:\n" \
-                      f"{cd['name']}"
+                      f"{cd['name']} , {cd['comments']}"
             send_mail(subject, message, 'maksimka.ivashkevich27@gmail.com',[cd['email']])
             sent = True
     # ... send email
