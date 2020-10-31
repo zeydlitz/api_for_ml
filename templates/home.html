@@ -26,12 +26,18 @@
         }
 
 
-           .i-icon-2 {
+        .i-icon-2 {
             display: inline-block;
             text-transform: none;
             speak: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        .Zuza {
+            display: grid;
+            grid-template-columns: 200px 200px 200px;
+            column-gap: 10px;
         }
     </style>
 
@@ -124,17 +130,20 @@
         </header>
 
 
-{#        <div class="icons">#}
-{#            <a href="https://www.linkedin.com/in/zeydlitz/"><img src="{% static "images/linkedin.png" %}"></a>#}
-{#            <a href="https://github.com/zeydlitz"><img src="{% static "images/GitHub.png" %}"></a>#}
-{#            <a href="https://t.me/le_punir"><img src="{% static "images/tel.png" %}"></a>#}
-{##}
-{#        </div>#}
-        <div>
-            <a href="https://www.linkedin.com/in/zeydlitz/"class="button alt"  target="_blank" style="background-color: #444444; background-color: transparent;">LinkedIN</a>
-            <a href="https://github.com/zeydlitz" class="button alt"  target="_blank" style="background-color: #444444; background-color: transparent;">GitHub</a>
-            <a href="https://t.me/le_punir" class="button alt" target="_blank" style="background-color: #444444; background-color: transparent;">Telegram</a>
-            </div>
+        {#        <div class="icons">#}
+        {#            <a href="https://www.linkedin.com/in/zeydlitz/"><img src="{% static "images/linkedin.png" %}"></a>#}
+        {#            <a href="https://github.com/zeydlitz"><img src="{% static "images/GitHub.png" %}"></a>#}
+        {#            <a href="https://t.me/le_punir"><img src="{% static "images/tel.png" %}"></a>#}
+        {##}
+        {#        </div>#}
+        <div class="Zuza">
+            <a href="https://www.linkedin.com/in/zeydlitz/" class="button alt" target="_blank"
+               style="background-color: #444444; background-color: transparent;">LinkedIN</a>
+            <a href="https://github.com/zeydlitz" class="button alt" target="_blank"
+               style="background-color: #444444; background-color: transparent;">GitHub</a>
+            <a href="https://t.me/le_punir" class="button alt" target="_blank"
+               style="background-color: #444444; background-color: transparent;">Telegram</a>
+        </div>
         <div class="copyright">
             <p>&copy; Ivashkevich Maksim</p>
         </div>
