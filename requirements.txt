@@ -23,6 +23,7 @@ Django==3.1.1
 django-filter==2.3.0
 django-heroku==0.3.1
 django-inlinecss==0.3.0
+django-redis==4.12.1
 djangocms-installer==1.2.3
 djangorestframework==3.11.1
 entrypoints==0.3
@@ -74,10 +75,12 @@ pyparsing==2.4.7
 pyrsistent==0.17.3
 python-dateutil==2.8.1
 pytz==2020.1
+pywin32==228
 pywinpty==0.5.7
 pyzmq==19.0.2
 qtconsole==4.7.7
 QtPy==1.9.0
+redis==3.5.3
 scikit-learn==0.23.2
 scipy==1.5.2
 Send2Trash==1.5.0

@@ -54,8 +54,8 @@ from django.views.generic import TemplateView, CreateView
 from .froms import EmailPostForm
 from django.core.mail import send_mail
 
-def post_share(request):
 
+def post_share(request):
     sent = False
     if request.method == 'POST':
         # Form was submitted
@@ -66,12 +66,14 @@ def post_share(request):
             subject = f"Hello, {cd['name']}, we have recived your message."
             message = f"Your message:\n" \
                       f"{cd['name']} , {cd['comments']}"
-            send_mail(subject, message, 'maksimka.ivashkevich27@gmail.com',[cd['email']])
+            send_mail(subject, message, 'maksimka.ivashkevich27@gmail.com', [cd['email']])
             sent = True
+            form.save()
     # ... send email
     else:
         form = EmailPostForm()
-    return render(request, 'list/email.html', {'form': form,'sent': sent})
+    return render(request, 'list/email.html', {'form': form, 'sent': sent})
+
 
 class ApprovalsView(viewsets.ModelViewSet):
     queryset = heartd.objects.all()
@@ -81,13 +83,14 @@ class ApprovalsView(viewsets.ModelViewSet):
 class Forms(CreateView):
     def get_success_url(self):
         return reverse('offerta_create', args=(self.object.id,))
+
     model = heartd
     template_name = 'list/forms.html'
     fields = '__all__'
 
+
 class About(TemplateView):
     template_name = 'list/generic.html'
-
 
 
 class HomePageView(TemplateView):
@@ -95,38 +98,21 @@ class HomePageView(TemplateView):
 
 
 def myform(request):
-    sent=False
-    response=None
-    if request.method=="POST":
-        form=MyForm(request.POST)
+    sent = False
+    response = None
+    if request.method == "POST":
+        form = MyForm(request.POST)
         if form.is_valid():
-            cd=form.cleaned_data
+            cd = form.cleaned_data
             my_alg = Ada()
             response = my_alg.compute_prediction(cd)
-            response['probability']=float("{:.2f}".format(response['probability']))
-            sent=True
-    else :
-        form=MyForm()
-    return render(request,"list/forms.html",{'sent':sent,'response':response,'form': form})
+            response['probability'] = float("{:.2f}".format(response['probability']))
+            sent = True
+            form.save()
+    else:
+        form = MyForm()
+    return render(request, "list/forms.html", {'sent': sent, 'response': response, 'form': form})
 
-
-# @api_view(["POST"])
-# def approvereject(request):
-#     try:
-#         mdl = joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/loan_model.pkl")
-#         # mydata=pd.read_excel('/Users/sahityasehgal/Documents/Coding/bankloan/test.xlsx')
-#         mydata = request.data
-#         unit = np.array(list(mydata.values()))
-#         unit = unit.reshape(1, -1)
-#         scalers = joblib.load("/Users/sahityasehgal/Documents/Coding/DjangoApiTutorial/DjangoAPI/MyAPI/scalers.pkl")
-#         X = scalers.transform(unit)
-#         y_pred = mdl.predict(X)
-#         y_pred = (y_pred > 0.58)
-#         newdf = pd.DataFrame(y_pred, columns=['Status'])
-#         newdf = newdf.replace({True: 'Approved', False: 'Rejected'})
-#         return JsonResponse('Your Status is {}'.format(newdf), safe=False)
-#     except ValueError as e:
-#         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 
 class EndpointViewSet(
     mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
@@ -185,8 +171,8 @@ class PredictView(views.APIView):
 
         algorithm_status = self.request.query_params.get("status", "production")
         algorithm_version = self.request.query_params.get("version")
-        #algs = MLAlgorithm.objects.filter(parent_endpoint__name=endpoint_name, status__status=algorithm_status,
-          #                                status__active=True)
+        # algs = MLAlgorithm.objects.filter(parent_endpoint__name=endpoint_name, status__status=algorithm_status,
+        #                                status__active=True)
         algs = [MLAlgorithm.objects.get(id=1)]
         if algs == []:
             logger.error("algs is empty")
