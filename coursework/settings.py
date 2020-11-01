@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'API.apps.ApiConfig',
     'rest_framework',
     'ml',
-    'store',
     'whitenoise.runserver_nostatic',
     'django_inlinecss'
 ]
