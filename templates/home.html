@@ -40,7 +40,9 @@
             column-gap: 2%;
             justify-items: stretch;
         }
-
+        #space{
+            height: 350px;
+        }
 
     </style>
 
@@ -125,19 +127,29 @@
         </div>
     </section>
 {% endblock %}
-<section id="footer">
+{#<section id="footer">#}
+{#    <div class="inner">#}
+{#        <header>#}
+{#            <h2>Contact us</h2>#}
+{#        </header>#}
+{#        <div class="Zuza">#}
+{#            <a href="https://www.linkedin.com/in/zeydlitz/" class="button alt" target="_blank"#}
+{#               style="background-color: #444444; background-color: transparent;">LinkedIN</a>#}
+{#            <a href="https://github.com/zeydlitz" class="button alt" target="_blank"#}
+{#               style="background-color: #444444; background-color: transparent;">GitHub</a>#}
+{#            <a href="https://t.me/le_punir" class="button alt" target="_blank"#}
+{#               style="background-color: #444444; background-color: transparent;">Telegram</a>#}
+{#        </div>#}
+{#        <div class="copyright">#}
+{#            <p>&copy; Ivashkevich Maksim</p>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
+<footer id="footer">
     <div class="inner">
         <header>
             <h2>Contact us</h2>
         </header>
-
-
-        {#        <div class="icons">#}
-        {#            <a href="https://www.linkedin.com/in/zeydlitz/"><img src="{% static "images/linkedin.png" %}"></a>#}
-        {#            <a href="https://github.com/zeydlitz"><img src="{% static "images/GitHub.png" %}"></a>#}
-        {#            <a href="https://t.me/le_punir"><img src="{% static "images/tel.png" %}"></a>#}
-        {##}
-        {#        </div>#}
         <div class="Zuza">
             <a href="https://www.linkedin.com/in/zeydlitz/" class="button alt" target="_blank"
                style="background-color: #444444; background-color: transparent;">LinkedIN</a>
@@ -150,7 +162,7 @@
             <p>&copy; Ivashkevich Maksim</p>
         </div>
     </div>
-</section>
+</footer>
 <!-- Scripts -->
 <script src="{% static "js/jquery.min.js" %}"></script>
 <script src="{% static "js/skel.min.js" %}"></script>

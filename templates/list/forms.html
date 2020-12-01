@@ -11,10 +11,11 @@
     {% if sent %}
         <h1>Data successfully sent</h1>
         <p>
-            The model predicted "{{ response.label }}" and his probability availability of have
+            The model predicted "{{ response.label }}" and probability availability of have
             HD {{ response.probability }}.
         </p>
-
+        <div id="space">
+        </div>
     {% else %}
         <h1>New patient</h1>
         <div style="right : 50%;">
@@ -23,6 +24,7 @@
                 <div style="color: #0c0c0c !important;">
                     {{ form.as_p }}
                 </div>
+
                 <datalist id='datalist'>
                 </datalist>
                 <datalist id='datalist1'>
@@ -34,6 +36,7 @@
                 <input type="submit" value="Save">
             </form>
         </div>
+
     {% endif %}
 {% endblock %}
 </body>

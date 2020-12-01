@@ -47,6 +47,7 @@ from .serializers import MLAlgorithmSerializer
 from .models import MLAlgorithmStatus
 from .serializers import MLAlgorithmStatusSerializer
 from ml.classifier.ada import Ada
+from ml.classifier.log import Models
 from .models import MLRequest
 from .serializers import MLRequestSerializer
 from django.db import transaction
@@ -104,7 +105,8 @@ def myform(request):
         form = MyForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            my_alg = Ada()
+            # my_alg = Ada()
+            my_alg = Models()
             response = my_alg.compute_prediction(cd)
             response['probability'] = float("{:.2f}".format(response['probability']))
             sent = True
