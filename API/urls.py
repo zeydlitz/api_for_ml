@@ -31,7 +31,7 @@ urlpatterns = [
     ),
     #    path('form/', Forms.as_view(), name='forms'),
     path('form/', myform, name='forms'),
-    path('form/<int:pk>/', Forms.as_view(), name='f'),
+    # path('form/<int:pk>/', Forms.as_view(), name='f'),
     path('about/', About.as_view(), name='about'),
     path('send_email/', post_share, name='email'),
 

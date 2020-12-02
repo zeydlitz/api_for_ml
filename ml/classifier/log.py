@@ -8,14 +8,8 @@ import json
 class Models:
     def __init__(self):
         path_to_log = os.path.join(settings.BASE_DIR,r"research/model/logreg.pkl")
-        #path_to_grad = r"C:\Users\MiAir\data_sc\github\heart\research\model\gradient_boosting.pkl"
-        #path_to_ada = r"C:\Users\MiAir\data_sc\github\heart\research\model\Ada_Boost.pkl"
-        #path_to_lgbm = r"C:\Users\MiAir\data_sc\github\heart\research\model\modelL.pkl"
         self.encoders = LabelEncoder()
         self.log = joblib.load(path_to_log)
-        #self.grad = joblib.load(path_to_grad)
-        #self.ada = joblib.load(path_to_ada)
-        #self.lgbm = joblib.load(path_to_lgbm)
 
     def preprocessing(self, input_data):
         # JSON to pandas DataFrame
@@ -47,9 +41,6 @@ class Models:
         return train0
 
     def predict(self, input_data):
-        # a, b, c, d = self.log.predict_proba(input_data), self.grad.predict_proba(input_data), \
-        #              self.ada.predict_proba(input_data), self.lgbm.predict_proba(input_data)
-        #max([a[1], b[1], c[1], d[1]])
         return self.log.predict_proba(input_data)
 
     def postprocessing(self, input_data):
@@ -69,19 +60,3 @@ class Models:
         return prediction
 
 
-# input_data = {
-#         "age": 63,
-#         "sex": 1,
-#         "cp": 3,
-#         "trestbps": 145,
-#         "chol": 233,
-#         "fbs": 1,
-#         "restecg": 0,
-#         "thalach": 150,
-#         "exang": 0,
-#         "oldpeak": 2.3,
-#         "slope": 0,
-#         "ca": 0,
-#         "thal": 1,
-#     }
-# Models().compute_prediction(input_data)
