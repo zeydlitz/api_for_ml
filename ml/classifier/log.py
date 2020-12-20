@@ -44,10 +44,11 @@ class Models:
         return self.log.predict_proba(input_data)
 
     def postprocessing(self, input_data):
-        label = "No Disease"
-        if input_data[1] > 0.5:
-            label = "Disease"
-        return {"probability": input_data[1], "label": label, "status": "OK"}
+        label = "Disease"
+        pr = 1 - input_data[1]
+        if input_data[1] < 0.5:
+            label = "No Disease"
+        return {"probability":pr, "label": label, "status": "OK"}
 
     def compute_prediction(self, input_data):
         try:
