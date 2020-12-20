@@ -59,7 +59,7 @@ class Ada:
 
     def postprocessing(self, input_data):
         label = "Disease"
-        if input_data[1] < 0.5:
+        if input_data[1] > 0.5:
             label = "No Disease"
         pr = 1 - input_data[1]
         return {"probability": pr, "label": label, "status": "OK"}
