@@ -105,8 +105,8 @@ def myform(request):
         form = MyForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            # my_alg = Ada()
-            my_alg = Models()
+            my_alg = Ada()
+            #my_alg = Models()
             response = my_alg.compute_prediction(cd)
             response['probability'] = float("{:.2f}".format(response['probability']))
             sent = True
