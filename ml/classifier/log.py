@@ -7,7 +7,7 @@ import json
 
 class Models:
     def __init__(self):
-        path_to_log = os.path.join(settings.BASE_DIR,r"research/model/logreg.pkl")
+        path_to_log = os.path.join(settings.BASE_DIR,r"research/model/Voting_ens.pkl")
         self.encoders = LabelEncoder()
         self.log = joblib.load(path_to_log)
 
