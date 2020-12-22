@@ -6,7 +6,7 @@ from django.conf import settings
 import numpy as np
 class Ada:
     def __init__(self):
-        path_to_ada =  os.path.join(settings.BASE_DIR, r"research/model/Ada_Boost.pkl")
+        path_to_ada =  os.path.join(settings.BASE_DIR, r"research/model/1g.pkl")
         self.encoders = LabelEncoder()
         self.ada = joblib.load(path_to_ada)
 
