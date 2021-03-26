@@ -5,9 +5,10 @@ import os
 from django.conf import settings
 import json
 
+
 class Models:
     def __init__(self):
-        path_to_log = os.path.join(settings.BASE_DIR,r"research/model/1g.pkl")
+        path_to_log = os.path.join(settings.BASE_DIR, r"research/model/1g.pkl")
         self.encoders = LabelEncoder()
         self.log = joblib.load(path_to_log)
 
@@ -47,7 +48,7 @@ class Models:
         label = "Disease"
         if input_data[1] < 0.5:
             label = "No Disease"
-        return {"probability":input_data[1], "label": label, "status": "OK"}
+        return {"probability": input_data[1], "label": label, "status": "OK"}
 
     def compute_prediction(self, input_data):
         try:
@@ -58,5 +59,3 @@ class Models:
             return {"status": "Error", "message": str(e)}
 
         return prediction
-
-

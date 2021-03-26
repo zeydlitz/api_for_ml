@@ -1,39 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-
+import os
 from .froms import MyForm
-from rest_framework import viewsets, mixins
-from rest_framework.decorators import api_view
-from django.core import serializers
-from rest_framework.response import Response
-from rest_framework import status
-from django.http import JsonResponse
-from rest_framework.parsers import JSONParser
-from .models import heartd
 from .serializers import approvalsSerializers
-import pickle
-import joblib
-import json
-import numpy as np
-from sklearn import preprocessing
-import pandas as pd
-
 from django.db.models import F
 import datetime
-from django.db import transaction
 from .models import ABTest
 from .serializers import ABTestSerializer
-# backend/server/apps/endpoints/views.py file
 import json
 from numpy.random import rand
 from rest_framework import views, status
 from rest_framework.response import Response
-from ml.registry import MLRegistry
 from coursework.wsgi import registry
 from loguru import logger
-
-logger.add("debug.log", format="{time} {level} {message}", level='DEBUG', rotation='10 KB', compression='zip')
-
 from rest_framework import viewsets
 from rest_framework import mixins
 from rest_framework.exceptions import APIException
@@ -47,7 +26,6 @@ from .serializers import MLAlgorithmSerializer
 from .models import MLAlgorithmStatus
 from .serializers import MLAlgorithmStatusSerializer
 from ml.classifier.ada import Ada
-from ml.classifier.log import Models
 from .models import MLRequest
 from .serializers import MLRequestSerializer
 from django.db import transaction
@@ -55,6 +33,7 @@ from django.views.generic import TemplateView, CreateView
 from .froms import EmailPostForm
 from django.core.mail import send_mail
 
+logger.add("debug.log", format="{time} {level} {message}", level='DEBUG', rotation='10 KB', compression='zip')
 
 def post_share(request):
     sent = False
@@ -67,7 +46,7 @@ def post_share(request):
             subject = f"Hello, {cd['name']}, we have recived your message."
             message = f"Your message:\n" \
                       f"{cd['name']} , {cd['comments']}"
-            send_mail(subject, message, 'maksimka.ivashkevich27@gmail.com', [cd['email']])
+            send_mail(subject, message, os.environ['EMAIL_HOST_USER'], [cd['email']])
             sent = True
             form.save()
     # ... send email
@@ -106,7 +85,7 @@ def myform(request):
         if form.is_valid():
             cd = form.cleaned_data
             my_alg = Ada()
-            #my_alg = Models()
+            # my_alg = Models()
             response = my_alg.compute_prediction(cd)
             response['probability'] = float("{:.2f}".format(response['probability']))
             sent = True

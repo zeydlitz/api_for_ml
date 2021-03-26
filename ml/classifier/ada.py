@@ -4,9 +4,11 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler
 import os
 from django.conf import settings
 import numpy as np
+
+
 class Ada:
     def __init__(self):
-        path_to_ada =  os.path.join(settings.BASE_DIR, r"research/model/1g.pkl")
+        path_to_ada = os.path.join(settings.BASE_DIR, r"research/model/1g.pkl")
         self.encoders = LabelEncoder()
         self.ada = joblib.load(path_to_ada)
 
@@ -19,7 +21,7 @@ class Ada:
         input_data['thalach2'] = input_data['thalach'] // 40
         input_data['oldpeak2'] = input_data['oldpeak'] // 0.4
         input_data['sex'] = np.where(input_data['sex'] == 'Male', 1, 0)
-        input_data['oldpeak2'] = np.where(input_data['oldpeak2'] == 12.0, 13.0,input_data['oldpeak2'])
+        input_data['oldpeak2'] = np.where(input_data['oldpeak2'] == 12.0, 13.0, input_data['oldpeak2'])
         # if input_data['oldpeak2'].values==12.0:
         #     input_data['oldpeak2']=13.0
         # if input_data['sex'].values=='Male':
@@ -36,21 +38,19 @@ class Ada:
         for col in features:
             if input_data[col].dtype in numerics: continue
             categorical_columns.append(col)
-        path1='../../research/label/sex_ca.npy'
+        path1 = '../../research/label/sex_ca.npy'
         for col in categorical_columns:
             if col in input_data.columns:
                 le = LabelEncoder()
-                #le.fit(list(input_data[col].astype(str).values))
-                psth="research/label/"+col+'.npy'
+                # le.fit(list(input_data[col].astype(str).values))
+                psth = "research/label/" + col + '.npy'
                 le.classes_ = np.load(psth)
                 try:
                     input_data[col] = le.transform(list(input_data[col].astype(str).values))
                 except:
                     input_data[col] = le.transform([le.classes_[0]])
 
-
-
-        scaler2 =joblib.load("research/label/std_scaler.bin")
+        scaler2 = joblib.load("research/label/std_scaler.bin")
         train0 = pd.DataFrame(scaler2.transform(input_data), columns=input_data.columns)
         return train0
 
