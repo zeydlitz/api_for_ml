@@ -1,41 +1,29 @@
-FROM postgres:latest
-ENV PYTHONUNBUFFERED=1
-RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    && apt-get install -y --no-install-recommends apt-utils \
-    && apt-get install -yqq --no-install-recommends curl ca-certificates \
-    && update-ca-certificates \
-    && apt-get autoremove -yqq --purge \
-    && apt-get clean \
-    && rm -fr \
-        /var/lib/apt/lists/* \
-        /tmp/* \
-        /var/tmp/* \
-        /usr/share/man \
-        /usr/share/doc \
-        /usr/share/doc-base
+# pull official base image
+FROM python:3.8.5-slim-buster
 
-RUN apt-get update && apt-get install -y \
-    python3.9 \
-    python3-pip
-RUN mkdir /web_django
-WORKDIR /web_django
-# Copy requirements.txt to Docker image
+# set work directory
+WORKDIR /usr/src/app
 
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY *.sql /docker-entrypoint-initdb.d/
-ADD dump.sql /docker-entrypoint-initdb.d
-RUN chmod a+r /docker-entrypoint-initdb.d/*
-#RUN chmod a+r /docker-entrypoint-initdb.d/*
-# Copy application
-COPY docker_build /web_django
+## install psycopg2 dependencies
+#RUN apt-get update \
+#  && apt-get -y install gcc postgresql \
+#  && apt-get clean
 
+# install dependencies
+RUN pip install --upgrade pip
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
 
-# Set work directory so we can directly call app.py
-RUN pip install --upgrade pip wheel setuptools \
-    && pip install -r requirements.txt \
-    && rm -fr \
-        /root/.cache/pip/*
+# copy project
+COPY . .
+
+# collect static files
+#RUN python manage.py collectstatic --no-input
+
 EXPOSE 8000
 EXPOSE 5432
 #ENTRYPOINT ["python3","manage.py"]
