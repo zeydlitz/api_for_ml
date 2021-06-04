@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="{% static "images/title.png" %}" type="image/icon type">
+    <title>{% block title %}Home page{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        div > p > label {
+            color: black !important;
+            margin-left: 20px;
+        }
+
+        div > p > input {
+            width: 100% !important;
+        }
+
+        a > .image.fit img {
+            width: 20%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .i-icon-2 {
+            display: inline-block;
+            text-transform: none;
+            speak: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .Zuza {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+            column-gap: 2%;
+            justify-items: stretch;
+        }
+        #space{
+            height: 350px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header id="header">
+    <div class="inner">
+        <a href="/" class="logo">DiplomaWork</a>
+        <nav id="nav">
+            <a href="/">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'email' %}">Contact</a>
+        </nav>
+    </div>
+</header>
+<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+{% block content %}
+
+    <!-- Banner -->
+    <section id="banner" style="background-image: url('{% static 'images/brain.jpg' %}')">
+        <div class="inner">
+            <h1 style="color: #ffffff">Diplom :
+                <span>Predict Mental Health using Machine learning algorithm</span></h1>
+            <ul class="actions">
+                <li><a href="{% url 'forms' %}" class="button alt" style="background-color: #444444">Get Started</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- One -->
+    <section id="one">
+        <div class="inner">
+            <header>
+                <h2>About</h2>
+            </header>
+            <div style='font-family: "Lato",sant-serif;'>
+                <p>As defined by the World Health Organization (WHO),
+                    Mental health is a state of well-being in which a person realizes his or her own abilities,
+                    can cope with “life” stresses, can work productively and productively,
+                    and is able to contribute to the development of his or her community.
+                    Also, according to the WHO, mental health includes "subjective well-being, perceived self-realization,
+                    autonomy, competence, intergenerational dependence,
+                    and the self-realization of one's intellectual and emotional potential."</p>
+                <p>As a result of the 4th scientific and technological revolution, or information revolution,
+                    the percentage of people involved in information technology, “IT specialists”, has increased.
+                    Due to the peculiarities of some countries, "IT specialists" have filled the empty niche of the middle class,
+                    that is, they have become a full-fledged stratum in the country.
+                    The specifics of the work create additional mental problems. Therefore, in recent years,
+                    much attention has been paid to the importance of mental health in the technology sector.
+                    There is growing recognition of how pervasive mental health problems are in our "on-going" world.
+                    Employers are paying more attention to providing the necessary support mechanisms and creating
+                    an open environment in which stigma is removed when discussing mental health issues.</p>
+                <p>Our algorithm was successfully trained and showed excellent results on an independent test sample.
+                    And now we give you the opportunity to try out our system.</p>
+
+            </div>
+            <ul class="actions">
+                <li><a href="#" class="button alt">Learn More</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Two -->
+    <section id="two">
+        <div class="inner">
+            <article>
+                <div class="content">
+                    <header>
+                        <h3>REST API</h3>
+                    </header>
+                    <div class="image fit">
+                        <img src="{% static "images/r.jpg" %}" alt="My image">
+                    </div>
+                    <p>The website provides a rest api if you need to process several patients at once and need to do so
+                        quickly.</p>
+                </div>
+            </article>
+            <article class="alt">
+                <div class="content">
+                    <header>
+                        <h3>User friendly interface</h3>
+                    </header>
+                    <div class="image fit">
+                        <img src="{% static "images/ui.png" %}" alt="My  second image">
+                    </div>
+                    <p>You can easily enter your data and get the result of processing. your data will not fall into the
+                        wrong hands.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+{% endblock %}
+<footer id="footer">
+    <div class="inner">
+        <header>
+            <h2>Contact us</h2>
+        </header>
+        <div class="Zuza">
+            <a href="https://www.linkedin.com/in/zeydlitz/" class="button alt" target="_blank"
+               style="background-color: #444444; background-color: transparent;">LinkedIN</a>
+            <a href="https://github.com/zeydlitz" class="button alt" target="_blank"
+               style="background-color: #444444; background-color: transparent;">GitHub</a>
+            <a href="https://t.me/le_punir" class="button alt" target="_blank"
+               style="background-color: #444444; background-color: transparent;">Telegram</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; Ivashkevich Maksim</p>
+        </div>
+    </div>
+</footer>
+<!-- Scripts -->
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "js/skel.min.js" %}"></script>
+<script src="{% static "js/util.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
+<script src="{% static "js/test.js" %}"></script>
+
+</body>
+</html>
+

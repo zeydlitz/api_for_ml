@@ -1,0 +1,43 @@
+{% extends "home.html" %}
+{% load inlinecss %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Block Page{% endblock %}</title>
+
+</head>
+<body>
+{% block content %}
+    {% if sent %}
+        <h1>Data successfully sent</h1>
+        <p>
+            The model predicted "{{ response.label }}" and probability availability of have
+            HD {{ response.probability }}.
+        </p>
+        <div id="space">
+        </div>
+    {% else %}
+        <h1>New patient</h1>
+        <div style="right : 50%;">
+            {#    <div style=" padding: 50px;   background: #ccc;   position: fixed; top : 0рх; left : 50рх; padding : 1Opx; margin : Орх; width : 100%;">#}
+            <form action="" method="post">{% csrf_token %}
+                <div style="color: #0c0c0c !important;">
+                    {{ form.as_p }}
+                </div>
+
+                <datalist id='datalist'>
+                </datalist>
+                <datalist id='datalist1'>
+                </datalist>
+                <datalist id='datalist2'>
+                </datalist>
+                <datalist id='datalist3'>
+                </datalist>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+
+    {% endif %}
+{% endblock %}
+</body>
+</html>
