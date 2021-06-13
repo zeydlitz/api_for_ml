@@ -1,22 +1,22 @@
-// let datalist = document.getElementById('datalist');
+let datalist = document.getElementById('datalist');
 // let datalist1 = document.getElementById('datalist1');
 // let datalist2 = document.getElementById('datalist2');
 // let datalist3 = document.getElementById('datalist3');
 // var myArr = [datalist, datalist1, datalist2, datalist3];
-// var myArr = [datalist];
-// console.log(datalist);
-//
-// function addAge() {
-//
-//     for (let i = 20; i <= 79; i++) {
-//
-//         datalist.insertAdjacentHTML('beforeend',
-//             `<option value="${i}">`);
-//     }
-//
-// }
-//
-// addAge();
+var myArr = [datalist];
+console.log(datalist);
+
+function addAge() {
+
+    for (let i = 20; i <= 79; i++) {
+
+        datalist.insertAdjacentHTML('beforeend',
+            `<option value="${i}">`);
+    }
+
+}
+
+addAge();
 //
 // function addTrestbps() {
 //

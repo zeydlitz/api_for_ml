@@ -128,7 +128,7 @@ class physical(models.Model):
         ('66-100', '66-100')
     )
 
-    age = models.PositiveSmallIntegerField(validators=[MaxValueValidator(79), MinValueValidator(0)])
+    age = models.PositiveSmallIntegerField(validators=[MaxValueValidator(79), MinValueValidator(20)])
     gender = models.CharField(choices=Gender, max_length=15)
     self_employed = models.CharField(choices=self_emp, max_length=15)
     family_history = models.CharField(choices=family_his, max_length=15)

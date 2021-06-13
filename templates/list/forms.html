@@ -9,15 +9,14 @@
 <body>
 {% block content %}
     {% if sent %}
-        <h1>Data successfully sent</h1>
+        <h1>Данные успешно обработаны</h1>
         <p>
-            The model predicted "{{ response.label }}" and probability availability of have
-            HD {{ response.probability }}.
+            Модель спрогнозировала "{{ response.label }}" и веростность наличия: {{ response.probability }}.
         </p>
         <div id="space">
         </div>
     {% else %}
-        <h1>New patient</h1>
+        <h1>Тестирование</h1>
         <div style="right : 50%;">
             {#    <div style=" padding: 50px;   background: #ccc;   position: fixed; top : 0рх; left : 50рх; padding : 1Opx; margin : Орх; width : 100%;">#}
             <form action="" method="post">{% csrf_token %}
@@ -27,12 +26,12 @@
 
                 <datalist id='datalist'>
                 </datalist>
-                <datalist id='datalist1'>
-                </datalist>
-                <datalist id='datalist2'>
-                </datalist>
-                <datalist id='datalist3'>
-                </datalist>
+{#                <datalist id='datalist1'>#}
+{#                </datalist>#}
+{#                <datalist id='datalist2'>#}
+{#                </datalist>#}
+{#                <datalist id='datalist3'>#}
+{#                </datalist>#}
                 <input type="submit" value="Save">
             </form>
         </div>

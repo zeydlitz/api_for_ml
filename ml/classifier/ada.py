@@ -41,9 +41,9 @@ class Ada:
         return self.ada.predict_proba(input_data)
 
     def postprocessing(self, input_data):
-        label = "Treatment"
+        label = "Есть проблемы с психическим здоровьем"
         if input_data[1] < 0.5:
-            label = "No Treatment"
+            label = "Нет проблем с психическим здоровьем"
         return {"probability": input_data[1], "label": label, "status": "OK"}
 
     def compute_prediction(self, input_data):
