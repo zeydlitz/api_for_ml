@@ -63,7 +63,7 @@ variable "instance_type" {
 }
 variable "docker_image_url_django" {
   description = "Docker image to run in the ECS cluster"
-  default     = "785648151883.dkr.ecr.us-west-1.amazonaws.com/django-app:diplom1"
+  default     = "785648151883.dkr.ecr.us-west-1.amazonaws.com/django-app:update"
 }
 variable "app_count" {
   description = "Number of Docker containers to run"

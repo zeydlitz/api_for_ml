@@ -23,14 +23,14 @@ class MyForm(ModelForm):
         self.fields['age'].label = "Возраст"
         self.fields['gender'].label = "Пол"
         self.fields['self_employed'].label = "Самозанятость"
-        self.fields['family_history'].label = "Заболевания в семье"
+        self.fields['family_history'].label = "Психические заболевания в семье"
         self.fields['treatment'].label = "Вы обращались к врачу из-за проблем с психическим здоровьем?"
-        self.fields['work_interfere'].label = "Считаете ли вы, что психическое здоровье мешает вашей работе?"
+        self.fields['work_interfere'].label = "Считаете ли вы, что психическое здоровье мешает вашей работе и как часто?"
         self.fields['no_employees'].label = "Количество сотрудников в компании?"
         self.fields['remote_work'].label = "Вы находитесь на удаленной работе?"
         self.fields['tech_company'].label = "Работаете в технологической комапании?"
         self.fields[
-            'benefits'].label = "Ваш работодатель предоставляет попмощь для решения проблем с психическим здоровьем?"
+            'benefits'].label = "Ваш работодатель предоставляет помощь для решения проблем с психическим здоровьем?"
         self.fields['care_options'].label = "Знаете ли вы виды этой помощи?"
         self.fields[
             'wellness_program'].label = "Ваш работодатель когда-либо обсуждал психическое здоровье как часть оздоровительной программы сотрудника?"
